@@ -19,17 +19,16 @@ def get_data():
 df=get_data()
 
 #Addding toggle to view structure of data
-#data_toggle=st.button(label='View Data',value=False)
-#if data_toggle:
-   # st.dataframe(df.head())
-#else:
-   # pass
+data_toggle=st.toggle(label='View Data',value=False)
+if data_toggle:
+     st.dataframe(df.head())
+else:
+    pass
 
 #Creating sidebar filters
 st.sidebar.header("Filter the Customers by below facets" )
 gen=list(df['Gender'].unique())
 age_grp=list(df['Age_Group'].unique())
-col1, col2 = st.columns(2)
 gender=st.sidebar.multiselect('Filter Customer by Gender',gen,placeholder='Select Gender',default=gen)
 age_group=st.sidebar.multiselect('Filter Customer by Age Group',age_grp, placeholder='Select Age Group',default=age_grp)
 
@@ -67,7 +66,6 @@ with c1:
      st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
 with c2:
      st.dataframe(product_count,use_container_width=True,hide_index=True)
-     st.markdown('<style>div.block-container{padding-middle:1rem;}</style>',unsafe_allow_html=True)
 
 
 c11,c12=st.columns(2)
