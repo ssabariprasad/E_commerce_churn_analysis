@@ -21,7 +21,7 @@ df=get_data()
 #Addding toggle to view structure of data
 #data_toggle=st.button(label='View Data',value=False)
 #if data_toggle:
-    st.dataframe(df.head())
+   # st.dataframe(df.head())
 #else:
    # pass
 
