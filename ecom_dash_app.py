@@ -19,11 +19,11 @@ def get_data():
 df=get_data()
 
 #Addding toggle to view structure of data
-data_toggle=st.button(label='View Data',value=False)
-if data_toggle:
+#data_toggle=st.button(label='View Data',value=False)
+#if data_toggle:
     st.dataframe(df.head())
-else:
-    pass
+#else:
+   # pass
 
 #Creating sidebar filters
 st.sidebar.header("Filter the Customers by below facets" )
