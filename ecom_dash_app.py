@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 #setting page config
-st.set_page_config(page_title='E-COM Churn Analysis',page_icon=':chart_with_downwards_trend:',layout='wide')
+st.set_page_config(page_title='E-COM Churn Analysis',page_icon=':bar_chart:',layout='wide')
 st.title(':white[E-Commerce Customer Churn Analysis Dashboard]')
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>',unsafe_allow_html=True)
 
@@ -21,7 +21,7 @@ df=get_data()
 #Addding toggle to view structure of data
 data_toggle=st.toggle(label='View Data',value=False)
 if data_toggle:
-     st.dataframe(df.head())
+    st.dataframe(df.head())
 else:
     pass
 
@@ -50,11 +50,25 @@ with col2:
     st.subheader(':blue[Customers Left]:man-running:')
     st.subheader( df2[df2['Churn']==1]['Customer ID'].nunique())
 percentage=((df2[df2['Churn']==1]['Customer ID'].nunique())/df['Customer ID'].nunique())*100
-percentage=round(percentage)
+percentage=round(percentage,2)
 with col3:
     st.subheader(':red[Customer Churn Rate]:chart_with_downwards_trend:')
     st.subheader(str(percentage)+"%")
 
+st.markdown('---')
+
+col11, col12,col13 = st.columns(3)
+with col11:
+      st.subheader(':green[Number of Purchases By Churn Customers]')
+      st.subheader(df2[df2['Churn']==1]['Purchase Date'].count())
+with col12:
+     st.subheader(':blue[Number Of Returns By Churn Customers]')
+     st.subheader(df2[df2['Churn']==1]['Returns'].sum())
+with col13:
+    st.subheader(':red[Percentage of Returns]')
+    percentage_r=((df2[df2['Churn']==1]['Returns'].sum())/(df2[df2['Churn']==1]['Purchase Date'].count()))*100
+    percentage_r=percentage_r.round(2)
+    st.subheader(str(percentage_r)+"%")
 st.markdown('---')
 
 #creating plots
@@ -72,7 +86,7 @@ c11,c12=st.columns(2)
 with c11:
     payment_type=df2[df2['Churn']==1]['Payment Method'].value_counts()
     payment_type=pd.DataFrame({'Payment Type':payment_type.index,'Number of Purchases':payment_type.values})
-    fig1=px.pie(data_frame=payment_type,values='Number of Purchases',names='Payment Type',title='Payment Method Preffered by Churn Customers',color='Payment Type')
+    fig1=px.pie(data_frame=payment_type,values='Number of Purchases',names='Payment Type',title='Payment Method Preferred by Churn Customers',color='Payment Type')
     st.plotly_chart(fig1,theme="streamlit", use_container_width=True)
 with c12:
      st.dataframe(payment_type,use_container_width=True,hide_index=True) 
@@ -84,7 +98,7 @@ with c21:
     fig4 = px.bar(returns,x='Number_of_Returns', y='Product_Category',title='Products Retrurned By Churn Customers',color='Product_Category',orientation='h')
     st.plotly_chart(fig4, theme="streamlit", use_container_width=True)
 with c22:
-    returns=df2.groupby('Product Category')['Returns'].sum()
+    returns=df2[df2['Churn']==1].groupby('Product Category')['Returns'].sum()
     st.dataframe(returns,use_container_width=True)  
 
 # ---- HIDE STREAMLIT STYLE ----
