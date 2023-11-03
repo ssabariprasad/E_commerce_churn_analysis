@@ -52,17 +52,17 @@ with col2:
 percentage=((df2[df2['Churn']==1]['Customer ID'].nunique())/df['Customer ID'].nunique())*100
 percentage=round(percentage,2)
 with col3:
-    st.subheader(':red[Customer Churn Rate]:chart_with_downwards_trend:')
+    st.subheader(':red[Churn Rate]:chart_with_downwards_trend:')
     st.subheader(str(percentage)+"%")
 
 st.markdown('---')
 
 col11, col12,col13 = st.columns(3)
 with col11:
-      st.subheader(':green[Number of Purchases]')
+      st.subheader(':green[No of Purchases]')
       st.subheader(df2[df2['Churn']==1]['Purchase Date'].count())
 with col12:
-     st.subheader(':blue[Number Of Returns]')
+     st.subheader(':blue[No Of Returns]')
      st.subheader(df2[df2['Churn']==1]['Returns'].sum())
 with col13:
     st.subheader(':red[Percentage of Returns]')
