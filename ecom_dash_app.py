@@ -59,10 +59,10 @@ st.markdown('---')
 
 col11, col12,col13 = st.columns(3)
 with col11:
-      st.subheader(':green[Number of Purchases By Churn Customers]')
+      st.subheader(':green[Number of Purchases]')
       st.subheader(df2[df2['Churn']==1]['Purchase Date'].count())
 with col12:
-     st.subheader(':blue[Number Of Returns By Churn Customers]')
+     st.subheader(':blue[Number Of Returns]')
      st.subheader(df2[df2['Churn']==1]['Returns'].sum())
 with col13:
     st.subheader(':red[Percentage of Returns]')
