@@ -25,6 +25,10 @@ Streamlit is used here for Dashobard Web app development. Through these tools, w
 
 By the end of this project, we aim to provide actionable insights and recommendations to help the e-commerce business reduce customer churn and improve overall customer satisfaction. Our analysis will be based on sound data cleaning and visualization techniques, enabling data-driven decisions for the organization.
 
+Click on below link to view the application deployed in render platform using free account. so, it would take take sometime to load. 
+
+https://ecom-dashboard-qt9b.onrender.com/
+
 File Information:
 ECOM_Churn_Case_Study.ipynb   -> In this file, data cleaning and exported cleaned using pandas.
 ecom_dash_app.py  -> Stored clean data is loaded and dashboard app developed using streamlit.
