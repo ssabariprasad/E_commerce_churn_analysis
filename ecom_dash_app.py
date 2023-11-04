@@ -65,7 +65,7 @@ with col12:
      st.subheader(':blue[No Of Returns]')
      st.subheader(df2[df2['Churn']==1]['Returns'].sum())
 with col13:
-    st.subheader(':red[Percentage of Returns]')
+    st.subheader(':red[Return Rate]')
     percentage_r=((df2[df2['Churn']==1]['Returns'].sum())/(df2[df2['Churn']==1]['Purchase Date'].count()))*100
     percentage_r=percentage_r.round(2)
     st.subheader(str(percentage_r)+"%")
