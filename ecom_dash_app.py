@@ -59,7 +59,7 @@ st.markdown('---')
 
 col11, col12,col13 = st.columns(3)
 with col11:
-      st.subheader(':green[No of Purchases]')
+      st.subheader(':green[No Of Purchases]')
       st.subheader(df2[df2['Churn']==1]['Purchase Date'].count())
 with col12:
      st.subheader(':blue[No Of Returns]')
